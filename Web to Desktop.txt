@@ -1,0 +1,42 @@
+Convert Web Application to Desktop Application
+
+
+Create bat file as paste below code in notepad file
+Save Instructions
+
+1)Open Notepad
+2)Paste the code above
+3)Save as:
+4)run-inventory-system.bat
+5)Save as type: All Files (.)
+6)Save it to Desktop
+
+
+
+@echo off
+title Starting Laravel Inventory System...
+
+:: Start Apache silently
+start "" /min "E:\xampp\apache_start.bat"
+
+:: Start MySQL silently
+start "" /min "E:\xampp\mysql_start.bat"
+
+:: Go to Laravel project directory
+cd /d E:\xampp\htdocs\inventorySystem
+
+:: Open browser
+start "" http://localhost:8000
+
+:: Start Laravel development server
+php artisan serve
+
+pause
+
+
+Final .bat File Code for Your E:\xampp\htdocs\inventorySystem Project:
+
+
+.bat converter download from from chrome
+icon convertor to ico
+convert icon from bat to exe converter

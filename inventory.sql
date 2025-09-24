@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2025 at 03:41 PM
+-- Generation Time: Sep 24, 2025 at 08:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -120,6 +120,13 @@ CREATE TABLE `brands` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Ayat', 'Testign Perpose', 'no-image.png', '2025-09-04 12:25:29.000000', '2025-09-04 12:25:29.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +141,14 @@ CREATE TABLE `categories` (
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `code`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '100', 'Lawn', '2025-09-04 12:24:53.000000', '2025-09-04 12:24:53.000000', NULL),
+(2, '101', 'Boutiquee', '2025-09-04 12:25:09.000000', '2025-09-04 12:25:09.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -161,7 +176,8 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `name`, `code`, `email`, `country`, `city`, `phone`, `tax_number`, `adresse`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'walk-in-customer', 1, 'walk-in-customer@example.com', 'bangladesh', 'dhaka', '123456780', NULL, 'N45 , Dhaka', NULL, NULL, NULL);
+(1, 'walk-in-customer', 1, 'walk-in-customer@example.com', 'bangladesh', 'dhaka', '123456780', NULL, 'N45 , Dhaka', NULL, NULL, NULL),
+(2, 'Ehsan', 2, NULL, NULL, 'Faisalabad', '03014205141', NULL, 'Ilyas Park St No 6 Fsd\n1', '2025-09-23 10:52:09.000000', '2025-09-23 10:52:09.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,6 +229,13 @@ CREATE TABLE `count_stock` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `count_stock`
+--
+
+INSERT INTO `count_stock` (`id`, `user_id`, `date`, `warehouse_id`, `category_id`, `file_stock`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', 1, 1, 'stock_export_20250904172702.xlsx', '2025-09-04 12:27:09.000000', '2025-09-04 12:27:09.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -234,7 +257,8 @@ CREATE TABLE `currencies` (
 --
 
 INSERT INTO `currencies` (`id`, `code`, `name`, `symbol`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'USD', 'US Dollar', '$', NULL, NULL, NULL);
+(1, 'USD', 'US Dollar', '$', NULL, '2025-09-04 05:17:05.000000', '2025-09-04 05:17:05'),
+(2, 'PKR', 'Pakistani Rupee', '₨', '2025-09-04 05:14:13.000000', '2025-09-04 05:14:13.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -1045,6 +1069,13 @@ CREATE TABLE `payment_purchases` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `payment_purchases`
+--
+
+INSERT INTO `payment_purchases` (`id`, `user_id`, `date`, `Ref`, `purchase_id`, `account_id`, `montant`, `change`, `payment_method_id`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', 'INV/PR_1111', 1, NULL, 500000, 0, 2, NULL, '2025-09-04 12:40:44.000000', '2025-09-04 12:40:44.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1089,6 +1120,22 @@ CREATE TABLE `payment_sales` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `payment_sales`
+--
+
+INSERT INTO `payment_sales` (`id`, `user_id`, `date`, `Ref`, `sale_id`, `account_id`, `montant`, `change`, `payment_method_id`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', 'INV/SL_1111', 1, NULL, 700000, 0, 2, NULL, '2025-09-04 12:45:11.000000', '2025-09-04 12:45:11.000000', NULL),
+(2, 1, '2025-09-13', 'INV/SL_1112', 2, NULL, 200000, 0, 7, NULL, '2025-09-13 17:34:09.000000', '2025-09-13 17:34:09.000000', NULL),
+(3, 1, '2025-09-23', 'INV/SL_1113', 3, NULL, 50000, 0, 2, NULL, '2025-09-23 10:31:19.000000', '2025-09-23 10:31:19.000000', NULL),
+(4, 1, '2025-09-23', 'INV/SL_1114', 4, NULL, 50000, 0, 2, NULL, '2025-09-23 10:45:18.000000', '2025-09-23 10:45:18.000000', NULL),
+(5, 1, '2025-09-23', 'INV/SL_1115', 5, NULL, 10000, 0, 3, NULL, '2025-09-23 10:50:18.000000', '2025-09-23 10:50:18.000000', NULL),
+(6, 1, '2025-09-23', 'INV/SL_1116', 6, NULL, 50000, 0, 2, NULL, '2025-09-23 10:52:19.000000', '2025-09-23 10:52:19.000000', NULL),
+(7, 1, '2025-09-23', 'INV/SL_1117', 7, NULL, 7000, 0, 2, NULL, '2025-09-23 11:13:29.000000', '2025-09-23 11:13:29.000000', NULL),
+(8, 1, '2025-09-23', 'INV/SL_1118', 8, NULL, 7000, 0, 2, NULL, '2025-09-23 11:15:19.000000', '2025-09-23 11:15:19.000000', NULL),
+(9, 1, '2025-09-23', 'INV/SL_1119', 9, NULL, 7000, 0, 2, NULL, '2025-09-23 11:16:59.000000', '2025-09-23 11:16:59.000000', NULL),
+(10, 1, '2025-09-23', 'INV/SL_1120', 10, NULL, 7000, 0, 2, NULL, '2025-09-23 11:17:26.000000', '2025-09-23 11:17:26.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1110,6 +1157,13 @@ CREATE TABLE `payment_sale_returns` (
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment_sale_returns`
+--
+
+INSERT INTO `payment_sale_returns` (`id`, `user_id`, `date`, `Ref`, `sale_return_id`, `account_id`, `montant`, `change`, `payment_method_id`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', 'INV/RT_1111', 1, NULL, 110000, 0, 2, NULL, '2025-09-04 12:50:59.000000', '2025-09-04 12:50:59.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -1478,7 +1532,17 @@ INSERT INTO `permission_role` (`id`, `permission_id`, `role_id`) VALUES
 (144, 144, 1),
 (145, 145, 1),
 (146, 146, 1),
-(147, 147, 1);
+(147, 147, 1),
+(148, 48, 2),
+(149, 50, 2),
+(150, 49, 2),
+(151, 46, 2),
+(152, 45, 2),
+(153, 44, 2),
+(154, 37, 2),
+(155, 38, 2),
+(156, 121, 2),
+(157, 124, 2);
 
 -- --------------------------------------------------------
 
@@ -1550,6 +1614,15 @@ CREATE TABLE `products` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `type`, `warranty_period`, `warranty_unit`, `warranty_terms`, `has_guarantee`, `guarantee_period`, `guarantee_unit`, `code`, `Type_barcode`, `name`, `cost`, `price`, `category_id`, `brand_id`, `unit_id`, `unit_sale_id`, `unit_purchase_id`, `TaxNet`, `tax_method`, `image`, `note`, `stock_alert`, `is_variant`, `is_imei`, `not_selling`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'is_single', 0, 'months', NULL, 0, 0, 'months', '100', 'CODE128', 'Lahnga', 25000, 50000, 2, 1, 2, 2, 2, 0, '2', 'no-image.png', 'Testing Lahnga Description', 8, 0, 1, 0, 1, '2025-09-04 12:30:45.000000', '2025-09-04 12:30:45.000000', NULL),
+(2, 'is_single', 0, 'months', NULL, 0, 0, 'months', '102', 'CODE128', 'Lawn', 2000, 2300, 1, 1, 2, 2, 2, 0, '1', 'no-image.png', NULL, 10, 0, 0, 0, 1, '2025-09-23 11:07:52.000000', '2025-09-23 11:07:52.000000', NULL),
+(3, 'is_single', 0, 'months', NULL, 0, 0, 'months', '103', 'CODE39', 'Reshmi', 5000, 7000, 2, 1, 2, 2, 2, 0, '1', 'no-image.png', NULL, 20, 0, 0, 0, 1, '2025-09-23 11:13:14.000000', '2025-09-23 11:13:14.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1587,6 +1660,15 @@ CREATE TABLE `product_warehouse` (
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_warehouse`
+--
+
+INSERT INTO `product_warehouse` (`id`, `product_id`, `warehouse_id`, `product_variant_id`, `qte`, `manage_stock`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, NULL, 0, 1, NULL, '2025-09-23 10:52:19.000000', NULL),
+(2, 2, 1, NULL, 0, 1, NULL, NULL, NULL),
+(3, 3, 1, NULL, 56, 1, NULL, '2025-09-23 11:17:26.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -1629,6 +1711,14 @@ CREATE TABLE `providers` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `providers`
+--
+
+INSERT INTO `providers` (`id`, `name`, `code`, `email`, `phone`, `tax_number`, `country`, `city`, `adresse`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Nomi', 1, 'nomi@gmail.com', '03059252561', '03203939', 'Pakistan', 'Fsd', 'OK', '2025-09-04 12:33:07.000000', '2025-09-04 12:33:07.000000', NULL),
+(2, 'shafeeq', 2, 'shafi@gmail.com', '0392928498191', '29293291', 'Pk', 'FSD', NULL, '2025-09-04 12:33:34.000000', '2025-09-04 12:33:34.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1657,6 +1747,13 @@ CREATE TABLE `purchases` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `purchases`
+--
+
+INSERT INTO `purchases` (`id`, `user_id`, `Ref`, `date`, `time`, `provider_id`, `warehouse_id`, `tax_rate`, `TaxNet`, `discount`, `shipping`, `GrandTotal`, `paid_amount`, `statut`, `payment_statut`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'PR_1111', '2025-09-04', '17:39:11', 1, 1, 0, 0, 0, 0, 500000, 500000, 'received', 'paid', NULL, '2025-09-04 12:39:11.000000', '2025-09-04 12:40:44.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1680,6 +1777,13 @@ CREATE TABLE `purchase_details` (
   `created_at` timestamp(6) NULL DEFAULT NULL,
   `updated_at` timestamp(6) NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `purchase_details`
+--
+
+INSERT INTO `purchase_details` (`id`, `cost`, `purchase_unit_id`, `TaxNet`, `tax_method`, `discount`, `discount_method`, `purchase_id`, `product_id`, `product_variant_id`, `imei_number`, `total`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, 25000, 2, 0, '2', 0, '2', 1, 1, NULL, NULL, 500000, 20, NULL, '2025-09-04 12:40:22.000000');
 
 -- --------------------------------------------------------
 
@@ -1807,7 +1911,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `label`, `description`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES
-(1, 'Owner', 'Owner', 'Owner', NULL, NULL, NULL, 1);
+(1, 'Owner', 'Owner', 'Owner', NULL, NULL, NULL, 1),
+(2, 'CSR', 'CSR', 'Only Handle Add Sale & Purchase', '2025-09-04 12:36:18.000000', '2025-09-04 12:36:18.000000', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1861,6 +1966,22 @@ CREATE TABLE `sales` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `user_id`, `date`, `time`, `Ref`, `is_pos`, `client_id`, `warehouse_id`, `subscription_id`, `tax_rate`, `TaxNet`, `discount`, `shipping`, `GrandTotal`, `paid_amount`, `payment_statut`, `statut`, `shipping_status`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', '17:45:11', 'SL_1111', 0, 1, 1, NULL, 0, 0, 0, 0, 700000, 700000, 'paid', 'completed', NULL, NULL, '2025-09-04 12:45:11.000000', '2025-09-04 12:45:11.000000', NULL),
+(2, 1, '2025-09-13', '22:34:09', 'SL_1112', 1, 1, 1, NULL, 0, 0, 0, 0, 200000, 200000, 'paid', 'completed', NULL, NULL, '2025-09-13 17:34:09.000000', '2025-09-13 17:34:09.000000', NULL),
+(3, 1, '2025-09-23', '15:31:19', 'SL_1113', 1, 1, 1, NULL, 0, 0, 0, 0, 50000, 50000, 'paid', 'completed', NULL, NULL, '2025-09-23 10:31:19.000000', '2025-09-23 10:31:19.000000', NULL),
+(4, 1, '2025-09-23', '15:45:18', 'SL_1114', 1, 1, 1, NULL, 0, 0, 0, 0, 50000, 50000, 'paid', 'completed', NULL, NULL, '2025-09-23 10:45:18.000000', '2025-09-23 10:45:18.000000', NULL),
+(5, 1, '2025-09-23', '15:50:18', 'SL_1115', 1, 1, 1, NULL, 0, 0, 0, 0, 50000, 10000, 'partial', 'completed', NULL, NULL, '2025-09-23 10:50:18.000000', '2025-09-23 10:50:18.000000', NULL),
+(6, 1, '2025-09-23', '15:52:19', 'SL_1116', 1, 2, 1, NULL, 0, 0, 0, 0, 50000, 50000, 'paid', 'completed', NULL, NULL, '2025-09-23 10:52:19.000000', '2025-09-23 10:52:19.000000', NULL),
+(7, 1, '2025-09-23', '16:13:29', 'SL_1117', 1, 1, 1, NULL, 0, 0, 0, 0, 7000, 7000, 'paid', 'completed', NULL, NULL, '2025-09-23 11:13:29.000000', '2025-09-23 11:13:29.000000', NULL),
+(8, 1, '2025-09-23', '16:15:19', 'SL_1118', 1, 1, 1, NULL, 0, 0, 0, 0, 7000, 7000, 'paid', 'completed', NULL, NULL, '2025-09-23 11:15:19.000000', '2025-09-23 11:15:19.000000', NULL),
+(9, 1, '2025-09-23', '16:16:59', 'SL_1119', 1, 1, 1, NULL, 0, 0, 0, 0, 7000, 7000, 'paid', 'completed', NULL, 'PANDI', '2025-09-23 11:16:59.000000', '2025-09-23 11:16:59.000000', NULL),
+(10, 1, '2025-09-23', '16:17:26', 'SL_1120', 1, 1, 1, NULL, 0, 0, 0, 0, 7000, 7000, 'paid', 'completed', NULL, NULL, '2025-09-23 11:17:26.000000', '2025-09-23 11:17:26.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1885,6 +2006,22 @@ CREATE TABLE `sale_details` (
   `created_at` timestamp(6) NULL DEFAULT NULL,
   `updated_at` timestamp(6) NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sale_details`
+--
+
+INSERT INTO `sale_details` (`id`, `date`, `sale_id`, `product_id`, `product_variant_id`, `imei_number`, `price`, `sale_unit_id`, `TaxNet`, `tax_method`, `discount`, `discount_method`, `total`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, '2025-09-04', 1, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 700000, 14, NULL, NULL),
+(2, '2025-09-13', 2, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 200000, 4, NULL, NULL),
+(3, '2025-09-23', 3, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 50000, 1, NULL, NULL),
+(4, '2025-09-23', 4, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 50000, 1, NULL, NULL),
+(5, '2025-09-23', 5, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 50000, 1, NULL, NULL),
+(6, '2025-09-23', 6, 1, NULL, NULL, 50000, 2, 0, '2', 0, '2', 50000, 1, NULL, NULL),
+(7, '2025-09-23', 7, 3, NULL, NULL, 7000, 2, 0, '1', 0, '2', 7000, 1, NULL, NULL),
+(8, '2025-09-23', 8, 3, NULL, NULL, 7000, 2, 0, '1', 0, '2', 7000, 1, NULL, NULL),
+(9, '2025-09-23', 9, 3, NULL, NULL, 7000, 2, 0, '1', 0, '2', 7000, 1, NULL, NULL),
+(10, '2025-09-23', 10, 3, NULL, NULL, 7000, 2, 0, '1', 0, '2', 7000, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1915,6 +2052,13 @@ CREATE TABLE `sale_returns` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sale_returns`
+--
+
+INSERT INTO `sale_returns` (`id`, `user_id`, `date`, `time`, `Ref`, `sale_id`, `client_id`, `warehouse_id`, `tax_rate`, `TaxNet`, `discount`, `shipping`, `GrandTotal`, `paid_amount`, `payment_statut`, `statut`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2025-09-04', '17:50:10', 'RT_1111', 1, 1, 1, 0, 0, 0, 10000, 110000, 110000, 'paid', 'received', NULL, '2025-09-04 12:50:10.000000', '2025-09-04 12:50:59.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1938,6 +2082,13 @@ CREATE TABLE `sale_return_details` (
   `created_at` timestamp(6) NULL DEFAULT NULL,
   `updated_at` timestamp(6) NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sale_return_details`
+--
+
+INSERT INTO `sale_return_details` (`id`, `sale_return_id`, `product_id`, `price`, `sale_unit_id`, `TaxNet`, `tax_method`, `discount`, `discount_method`, `product_variant_id`, `imei_number`, `quantity`, `total`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 50000, 2, 0, '2', 0, '2', NULL, NULL, 2, 100000, NULL, '2025-09-04 12:50:34.000000');
 
 -- --------------------------------------------------------
 
@@ -2003,7 +2154,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `email`, `currency_id`, `CompanyName`, `CompanyPhone`, `CompanyAdress`, `logo`, `favicon`, `is_invoice_footer`, `invoice_footer`, `footer`, `developed_by`, `client_id`, `warehouse_id`, `default_language`, `sms_gateway`, `show_language`, `quotation_with_stock`, `app_name`, `page_title_suffix`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin@example.com', 1, 'Stocky', '6315996770', '3618 Abia Martin Drive', 'logo-default.png', 'favicon.ico', 0, NULL, 'Stocky - Ultimate Inventory With POS', 'Stocky', 1, NULL, 'en', 1, 1, 1, 'Stocky | Ultimate Inventory With POS', 'Ultimate Inventory With POS', NULL, '2025-07-01 20:16:33.000000', NULL);
+(1, 'rahmeenarts@gmail.com', 2, 'Rahmeen Arts', '03061652990', 'Shop #4 , Gurdwara Gali #3, Diamond Awan Market, Faisalabad', '53340610Gold Elegant Fashion Brand Logo (2).png', '68b991ba92805.png', 1, 'Test Invlice For Footer', 'Developed with ❤️ by Muhammad Numan Baig', 'Ehsan Elahi', 1, 1, 'en', 1, 1, 1, 'Rahmeen Arts', 'Rahmeen Arts', NULL, '2025-09-23 11:14:55.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -25085,6 +25236,14 @@ CREATE TABLE `units` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `name`, `ShortName`, `base_unit`, `operator`, `operator_value`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Set', 'Set', NULL, '*', 1, '2025-09-04 12:26:07.000000', '2025-09-04 12:26:07.000000', NULL),
+(2, 'Piece', 'Pcs', NULL, '*', 1, '2025-09-04 12:26:18.000000', '2025-09-04 12:26:18.000000', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -25113,7 +25272,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `avatar`, `phone`, `role_id`, `statut`, `is_all_warehouses`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'William', 'Castillo', 'William Castillo', 'admin@admin.com', '$2y$10$hbN8Na/7X8Yg5Ozi2Tp0SOLwSIzviYfgnfKeFjgWGqRXc6GoGGdNe', 'no_avatar.png', '0123456789', 1, 1, 1, NULL, NULL, NULL);
+(1, 'Hamza', 'Shafique', 'Hamza Shafique', 'admin@admin.com', '$2y$10$z8yJqKOEw1uiPfYTDzReT.cd9/smzbXkFdNVNSgqsZ/81eHiwdvV.', '49988084WhatsApp Image 2025-09-04 at 17.58.36_9d7d9f05 (1).jpg', '03061652990', 1, 1, 1, NULL, '2025-09-04 13:02:20.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -25150,7 +25309,7 @@ CREATE TABLE `warehouses` (
 --
 
 INSERT INTO `warehouses` (`id`, `name`, `city`, `mobile`, `zip`, `email`, `country`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Default Warehouse', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Rahmeen Arts', 'Faisalabad', '03061652990', '38000', 'rahmeenarts@gmail.com', 'Pakistan', NULL, '2025-09-04 05:16:26.000000', NULL);
 
 --
 -- Indexes for dumped tables
@@ -25825,19 +25984,19 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `combined_products`
@@ -25855,13 +26014,13 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `count_stock`
 --
 ALTER TABLE `count_stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -26011,7 +26170,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `payment_purchases`
 --
 ALTER TABLE `payment_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_purchase_returns`
@@ -26023,13 +26182,13 @@ ALTER TABLE `payment_purchase_returns`
 -- AUTO_INCREMENT for table `payment_sales`
 --
 ALTER TABLE `payment_sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment_sale_returns`
 --
 ALTER TABLE `payment_sale_returns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_with_credit_card`
@@ -26053,7 +26212,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `permission_role`
 --
 ALTER TABLE `permission_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `pos_settings`
@@ -26065,7 +26224,7 @@ ALTER TABLE `pos_settings`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_variants`
@@ -26077,7 +26236,7 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `product_warehouse`
 --
 ALTER TABLE `product_warehouse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -26089,19 +26248,19 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT for table `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_returns`
@@ -26131,7 +26290,7 @@ ALTER TABLE `quotation_details`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `role_user`
@@ -26143,25 +26302,25 @@ ALTER TABLE `role_user`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sale_details`
 --
 ALTER TABLE `sale_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sale_returns`
 --
 ALTER TABLE `sale_returns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sale_return_details`
 --
 ALTER TABLE `sale_return_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `servers`
@@ -26233,7 +26392,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
